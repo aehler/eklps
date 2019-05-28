@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>"ЭклипС" :: Виртуальные скачки</title>
+
+<!-- CSS styles -->
+<link href="pagelayout.css" rel="stylesheet" type="text/css">
+
+<!-- Vertical Main Menu Bar -->
+<link href="SpryAssets/SpryMenuBarVertical.css" rel="stylesheet" type="text/css">
+<script src="SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+
+</head><body>
+<div id="pageblock">
+  <div id="header"><img src="img/logo.png" width="168" height="100">
+</div>
+  <div id="loginboard">
+  <div style="display: inline; margin: 0 400px 0 0; text-aling: left"><b>Конюшня: "Penumbra" [Рег.Номер: 194] </b> &#8226; <a href="logout.php" class="menulink">Выход</a></div> <div style="display: inline; margin-right: 0; text-align: right">
+ Онлайн: 2  &#8226; <span id="servertime"></span>
+  <script type="text/javascript">
+var currenttime = 'October 29, 2015 08:35:53' //PHP method of getting server date
+
+///////////Stop editting here/////////////////////////////////
+
+var montharray=new Array("января","февраля","марта","апреля","мая","июня","июля","августа","сентября","октября","ноября","декабря")
+var serverdate=new Date(currenttime)
+
+function padlength(what){
+var output=(what.toString().length==1)? "0"+what : what
+return output
+}
+
+function displaytime(){
+serverdate.setSeconds(serverdate.getSeconds()+1)
+var datestring=padlength(serverdate.getDate())+" "+montharray[serverdate.getMonth()]+" "+serverdate.getFullYear()
+var timestring="&#8226; "+padlength(serverdate.getHours())+":"+padlength(serverdate.getMinutes())+":"+padlength(serverdate.getSeconds())
+document.getElementById("servertime").innerHTML=datestring+"  "+timestring
+}
+
+window.onload=function(){
+setInterval("displaytime()", 1000)
+}
+
+</script>
+</div>
+</div>
+<div id="page">  <div id="menublock">
+  <!-- Main menu -->
+  <ul id="MenuBar1" class="MenuBarVertical">
+  <li><a href="news.php">Новости</a>
+  </li>
+  <li><a class="MenuBarItemSubmenu" href="#">Конюшня</a>
+    <ul>
+      <li><a href="stableinfo.php">&#9830; Общая информация</a></li>
+      <li><a href="stableinfo_studs.php">&#9830; Жеребцы-производители</a></li>
+      <li><a href="stableinfo_broods.php">&#9830; Племенные кобылы</a></li>
+      <li><a href="stableinfo_racers.php">&#9830; Скаковое отделение</a></li>
+      <li><a href="stableinfo_foals.php">&#9830; Племенной молодняк</a></li>
+      <li><a href="stableinfo_retired.php">&#9830; Рабочий состав</a></li>
+      <li><a href="stableinfo_rent.php">&#9830; Аренда</a></li>
+      <li><a href="stableinfo_rip.php">&#9830; Мемориал</a></li>
+    </ul>
+  </li>
+  <li><a class="MenuBarItemSubmenu" href="#">Ипподром</a>
+      <ul>
+      <li><a href="track_info.php">&#9830; Ипподромы</a></li>
+      <li><a href="races_schedule.php">&#9830; Расписание скачек</a></li>
+      <li><a href="races_all_order.php">&#9830; Заказ скачек</a></li>
+      <li><a href="races_entries.php">&#9830; Прием заявок</a></li>
+      <li><a href="removefromrace.php">&#9830; Снять заявку</a></li>
+      <li><a href="races_preracecards.php">&#9830; Предварительная карточка скачек</a></li>
+      <li><a href="races_results.php">&#9830; Результаты скачек</a></li>
+      <li><a href="raceresults_search.php">&#9830; Поиск результатов скачек</a></li>
+      <li><a href="races_order.php">&#9830; Заказ субботних скачек</a></li>
+      <li><a class="MenuBarItemSubmenu" href="#">Спецмитинги</a>
+		<ul>
+      <li><a class="MenuBarItemSubmenu" href="#">Кубки "Пегаса"</a>
+		<ul>
+      <li><a href="race_pegascupsinfo.php">&#9830; Общая информация</a></li>
+      <li><a href="pg_races_entries.php">&#9830; Регистрация</a></li>
+      <li><a href="pg_races_results.php">&#9830; Результаты</a></li>
+		</ul></li>
+		</ul>
+	  </li>	  
+    </ul>
+  </li>
+  <li><a class="MenuBarItemSubmenu" href="#">Букмекер</a>
+      <ul>
+      <li><a href="toto_bets.php">&#9830; Ставки</a></li>
+      <li><a href="toto_results.php">&#9830; Результаты</a></li>
+      <li><a href="toto_statistics.php">&#9830; Статистика</a></li>
+    </ul>
+  </li>
+  <li><a class="MenuBarItemSubmenu" href="#">Тренинг</a>
+      <ul>
+      <li><a href="trening_normal.php">&#9830; Тренинг</a></li>
+      <li><a href="trening_group.php">&#9830; Результаты</a></li>
+      <li><a href="trening.php">&#9830; Тренинг (тестовый)</a></li>
+    </ul>
+  </li>
+  <li><a class="MenuBarItemSubmenu" href="#">Банк</a>
+      <ul>
+      <li><a href="bank.php">&#9830; Общая информация</a></li>
+      <li><a href="bank_transfer.php">&#9830; Переводы</a></li>
+      <li><a href="bankreport.php">&#9830; Выписка со счета</a></li>
+    </ul>
+  </li>
+  <li><a class="MenuBarItemSubmenu" href="#">Офис</a>
+      <ul>
+      <li><a class="MenuBarItemSubmenu" href="#">Регистрат</a>
+		<ul>
+		<li><a href="changestatus_stud.php">&#9830; Регистрация жеребца-производителя</a></li>
+		<li><a href="changestatus_private_stud.php">&#9830; Регистрация частного жеребца-производителя</a></li>
+	  </ul>
+	  </li>      
+	  <li><a class="MenuBarItemSubmenu" href="#">Строительная контора</a>
+		<ul>
+		<li><a href="st_build.php">&#9830; Прораб</a></li>
+		<li><a href="st_manage.php">&#9830; Управляющий</a></li>
+		</ul>
+	  </li>
+    </ul>
+  </li>
+  <li><a class="MenuBarItemSubmenu" href="#">Центр заводчиков</a>
+      <ul>
+      <li><a href="studs_reiting.php">&#9830; Рейтинги ЖП</a></li>
+      <li><a href="embrio.php">&#9830; ЦИО "Эмбрио"</a></li>
+    </ul>
+  </li>
+  <li><a class="MenuBarItemSubmenu" href="#">Аукционы</a>
+      <ul>
+		<li><a class="MenuBarItemSubmenu" href="#">Сезонные</a>
+			<ul>
+				<li><a href="auction.php">&#9830; Каталог аукциона</a></li>
+				<li><a href="auctionlotsubmit.php">&#9830; Регистрация лотов</a></li>
+				<li><a href="auction_archive.php">&#9830; Архивы</a></li>
+			</ul>
+		</li>
+        <li><a class="MenuBarItemSubmenu" href="#">Частные</a>
+			<ul>
+				<li><a href="privauction.php">&#9830; Каталог аукциона</a></li>
+				<li><a href="privauctionlotsubmit.php">&#9830; Регистрация лотов</a></li>
+				<li><a href="privauction_archive.php">&#9830; Архивы</a></li>
+			</ul>
+		</li>
+		<li><a href="zkauction.php">&#9830; Распродажа</a></li>
+    </ul>
+  </li>
+  <li><a class="MenuBarItemSubmenu" href="#">Справочная</a>
+      <ul>
+      <li><a href="visit_stable.php">&#9830; Визитка конюшни</a></li>
+      <li><a href="info_horsecard.php">&#9830; Карточка лошади</a></li>
+      <li><a href="info_horsename.php">&#9830; Проверка клички лошади</a></li>
+      <li><a href="race_best10.php">&#9830; Лучшие лошади</a></li>
+      <li><a href="info_speedclass.php">&#9830; Класс резвости</a></li>
+      <li><a href="race_records.php">&#9830; Рекорды</a></li>
+      <li><a href="triplecrowns.php">&#9830; "Тройные Короны"</a></li>
+    </ul>
+  </li>
+    <li><a href="horseimport.php">Импорт лошади</a>
+    </li>
+  <li><a class="MenuBarItemSubmenu" href="#">Чемпионат</a>
+      <ul>
+      <li><a href="championship_points.php">&#9830; Баллы</a></li>
+      <li><a href="championship_entries.php">&#9830; Регистрация</a></li>
+    </ul>
+  </li>
+      <li><a href="edit_profil.php"><br>Профиль<br><br></a>
+    </li>
+
+</ul>
+<script type="text/javascript">
+<!--
+var MenuBar1 = new Spry.Widget.MenuBar("MenuBar1", {imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
+//-->
+</script>
+ </div>
+</div><!-- Начало основного блока -->
+<div id="mainblock">
+<div id="infoblock">
+<span id="infoblocktitle">Справочная :: Племенная Карточка Лошади</span>
+
+
+<table id='infoblocktbl2'>
+<tr><td>
+<form method='post' action='info_horsecard.php'>
+Введите регистрационный номер лошади: <input type='text' name='racer' size='6' maxlength='5'>
+<input type='submit' name='submit' value='поиск'></form>
+</td></tr>
+</table>
+
+<table id='infoblocktbl'>
+<tr id='charter'><td width=270 rowspan='12'><img src='img/colors/createpic.php?horsekod=5848' width=270 height=200 style=margin-top:3px></td>
+<td colspan='2' align='center'><font color='#0c2e7d' size=4><strong>5848 Ромул</strong></font><br><br>(146 Остров - 400 Релинда [X])<br><br></td></tr>
+<tr id='charter'><td id='textright2'>Сезон рождения:</td><td id='textleft2'>2011</td></tr>
+<tr id='charter'><td id='textright2'>Масть:</td><td id='textleft2'>серая в яблоках</td></tr>
+<tr id='charter'><td id='textright2'>Пол:</td><td id='textleft2'>жеребец</td></tr>
+<tr id='charter'><td id='textright2'>Высота в холке, см:</td><td id='textleft2'>160</td></tr>
+<tr id='charter'><td id='textright2'>Заводчик:</td><td id='textleft2'>Dragon Mountain</td></tr>
+<tr id='charter'><td id='textright2'>Владелец:</td><td id='textleft2'>Райский Сад</td></tr><tr id='charter'><td id='textright2'>Скаковая карьера:</td><td id='textleft2'>6 1-0-1-0</td></tr>
+<tr id='charter'><td id='textright2'>Выигрыш:</td><td id='textleft2'>$ 39,876</td></tr><tr id='charter'><td id='textright2'>За сезон:</td><td id='textleft2'>3 0-0-1-0</td></tr>
+<tr id='charter'><td id='textright2'>Выигрыш за сезон:</td><td id='textleft2'>$ 76</td></tr><tr id='charter'><td id='textright2'>Отделение:</td><td id='textleft2'>скаковое</td></tr></table>
+<table id='infoblocktbl2'><tr id='infoblockheader'><td colspan=3>Происхождение лошади</td></tr><tr><td id='infoblocktbl2' rowspan=4><font size=3 color=#333><b>146 ОСТРОВ</b></font><br><br>светло-серая<br>160 см<br>1999<br><br>55 8-11-9-5<br>$ 1,000,500</td><td id='infoblocktbl2' rowspan=2><font size=3 color=#333><b>33 Свиток</b></font><br><br>серая в гречку<br>163 см<br>1993<br><br>0 0-0-0-0<br>$ 0</td><td id='infoblocktbl2'>--</td></tr><tr><td id='infoblocktbl2'>--</td></tr><tr><td id='infoblocktbl2' rowspan=2><font size=3 color=#333><b>16 Орхидея</b></font><br><br>серая в гречку<br>160 см<br>1991<br><br>3 0-0-0-0<br>$ 0</td><td id='infoblocktbl2'>--</td></tr><tr><td id='infoblocktbl2'>--</td></tr><tr><td id='infoblocktbl2' rowspan=4><font size=3 color=#333><b>400 Релинда [X]</b></font><br><br>красно-серая<br>165 см<br>2004<br><br>28 0-3-3-8<br>$ 46,450</td><td id='infoblocktbl2' rowspan=2><font size=3 color=#333><b>98 Лунный Гость</b></font><br><br>темно-гнедая<br>163 см<br>1998<br><br>49 3-7-4-6<br>$ 175,075</td><td id='infoblocktbl2'><font size=3 color=#333><b>7 Гарем</b></font><br><br>темно-гнедая<br>162 см<br>1990<br><br>7 1-1-1-1<br>$ 18,800</td></tr><tr><td id='infoblocktbl2'><font size=3 color=#333><b>13 Лазурь [X]</b></font><br><br>бурая<br>161 см<br>1991<br><br>3 0-0-0-0<br>$ 0</td></tr><tr><td id='infoblocktbl2' rowspan=2><font size=3 color=#333><b>73 Революция [Z]</b></font><br><br>светло-серая<br>163 см<br>1997<br><br>7 1-1-2-0<br>$ 18,550</td><td id='infoblocktbl2'><font size=3 color=#333><b>5 Вальс</b></font><br><br>светло-серая<br>166 см<br>1990<br><br>5 2-2-1-0<br>$ 44,575</td></tr><tr><td id='infoblocktbl2'><font size=3 color=#333><b>26 Румба</b></font><br><br>светло-серая<br>157 см<br>1992<br><br>0 0-0-0-0<br>$ 0</td></tr></table><table id='infoblocktbl2'><tr id='infoblockheader'><td colspan=4>Скаковая карьера</td></tr><tr id='infoblockheader'><td>Код скачки</td><td>Скачка</td><td>Место</td><td>Время</td></tr><tr id='infoblockheader'><td colspan=4 bgcolor='#FDFDAA'>Сезон 2015 - возраст 4 года</td></tr><tr id='charter' ><td><a href='raceinfo4.php?race=2015101105' class='menulink'>2015101105</a></td><td align=left>AA Seven Kings Cup, ст-з, 2000 м, 3+yo Ж</td><td>13</td><td>-- </td></tr><tr id='charter' ><td><a href='raceinfo4.php?race=2015092609' class='menulink'>2015092609</a></td><td align=left>FNX Гр.I  Grand Deer, ст-з, 3200 м, 4+yo Ж</td><td>13</td><td>-- </td></tr><tr id='charter' ><td><a href='raceinfo4.php?race=2015091817' class='menulink'>2015091817</a></td><td align=left>Тестовый класс, ст-з, 3200 м, 4+yo</td><td>21</td><td>-- </td></tr><tr id='charter' ><td><a href='raceinfo4.php?race=2015090214' class='menulink'>2015090214</a></td><td align=left>Тестовый класс, ст-з, 4400 м, 4+yo</td><td>10</td><td>-- </td></tr><tr id='charter' ><td><a href='raceinfo4.php?race=2015082511' class='menulink'>2015082511</a></td><td align=left>Тестовый класс, ст-з, 4000 м, 4+yo</td><td>7</td><td>-- </td></tr><tr id='charter' ><td><a href='raceinfo4.php?race=2015082210' class='menulink'>2015082210</a></td><td align=left>Тестовый класс, ст-з, 4800 м, 4+yo</td><td>15</td><td>-- </td></tr><tr id='charter' ><td><a href='raceinfo4.php?race=2015042926' class='menulink'>2015042926</a></td><td align=left>Тестовый класс, ст-з, 1300 м, 2+yo</td><td>6</td><td>-- </td></tr><tr id='charter' ><td><a href='raceinfo4.php?race=2015042131' class='menulink'>2015042131</a></td><td align=left>Бронзовый класс, торф, 1700 м, 2+yo</td><td>3</td><td>-- </td></tr><tr id='infoblockheader'><td colspan=4 bgcolor='#FDFDAA'>Сезон 2014 - возраст 3 года</td></tr><tr id='charter' ><td><a href='raceinfo4.php?race=2014122813' class='menulink'>2014122813</a></td><td align=left>Тестовый класс, ст-з, 1400 м, 2+yo</td><td>6</td><td>-- </td></tr><tr id='charter' ><td><a href='raceinfo4.php?race=2014120216' class='menulink'>2014120216</a></td><td align=left>Медный класс, торф, 1700 м, 2+yo</td><td>6</td><td>-- </td></tr><tr id='charter' ><td><a href='raceinfo4.php?race=2014111705' class='menulink'>2014111705</a></td><td align=left>Золотой класс, ст-з, 1900 м, 3+yo</td><td>14</td><td>-- </td></tr><tr id='charter' bgcolor='#C1F999'><td><a href='raceinfo4.php?race=2014103003' class='menulink'>2014103003</a></td><td align=left>Гр.II Вавилонские Воины, ст-з, 2000 м, 3+yo Ж</td><td>1</td><td>2:19.13 </td></tr><tr id='charter' ><td><a href='raceinfo4.php?race=2014101310' class='menulink'>2014101310</a></td><td align=left>Тестовый класс, ст-з, 1700 м, 2+yo</td><td>5</td><td>-- </td></tr><tr id='charter' ><td><a href='raceinfo4.php?race=2014100706' class='menulink'>2014100706</a></td><td align=left>Тестовый класс, ст-з, 2000 м, 3+yo</td><td>5</td><td>-- </td></tr><tr id='charter' ><td><a href='raceinfo4.php?race=2014092615' class='menulink'>2014092615</a></td><td align=left>Тестовый класс, ст-з, 1600 м, 2+yo</td><td>13</td><td>-- </td></tr><tr id='charter' ><td><a href='raceinfo4.php?race=2014091412' class='menulink'>2014091412</a></td><td align=left>Тестовый класс, ст-з, 1900 м, 2+yo</td><td>10</td><td>-- </td></tr><tr id='charter' ><td><a href='raceinfo4.php?race=2014090112' class='menulink'>2014090112</a></td><td align=left>Тестовый класс, ст-з, 2200 м, 3+yo</td><td>26</td><td>-- </td></tr><tr id='infoblockheader'><td colspan=4 bgcolor='#FDFDAA'>Сезон 2013 - возраст 2 года</td></tr><tr id='charter' ><td><a href='raceinfo4.php?race=2014030212' class='menulink'>2014030212</a></td><td align=left>Тестовый класс, торф, 1800 м, 2+yo</td><td>4</td><td>-- </td></tr><tr id='charter' ><td><a href='raceinfo4.php?race=2014012506' class='menulink'>2014012506</a></td><td align=left>Тестовый класс, торф, 1900 м, 2+yo</td><td>5</td><td>-- </td></tr><tr id='charter' ><td><a href='raceinfo4.php?race=2014010602' class='menulink'>2014010602</a></td><td align=left>Тестовый класс, 1900 м, 2+yo</td><td>18</td><td>-- </td></tr></table><table id='infoblocktbl'><tr id='infoblockheader'><td colspan=5>История продаж</td></tr><tr id='infoblockheader'><td>Дата</td><td>Бывший владелец</td><td>Новый владелец</td><td>Продана за, $</td><td>Примечание</td></tr><tr id='charter'><td>2015-05-01</td><td align=left>Каприоль</td><td align=left>Райский Сад</td><td>600</td><td>Передача лошади в РайСад</td></tr><tr id='charter'><td>2013-09-21</td><td align=left>Dragon Mountain</td><td align=left>Каприоль</td><td>20,000</td><td>Аукцион</td></tr></table>
+
+</div>
+<!-- End of основного блока -->
+</div>
+<div id="footer">
+<br />
+<a href="http://www.eklps.com" class="menulink">Игровой проект "ЭклипС"</a> &copy; 2003-2014<br />
+Вся информация на данном сайте является частной собственностью и защищена законом <br />
+<div style="padding: 40px 0px 20px 0px;">
+<span>
+
+
+<!--Google-->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-9551895-1', 'eklps.com');
+  ga('send', 'pageview');
+
+</script>
+<!--//Google-->
+
+</span>		
+		</div>
+</div>
+</div>
+</body>
+</html>

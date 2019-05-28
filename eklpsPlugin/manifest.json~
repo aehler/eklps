@@ -1,0 +1,28 @@
+{
+    "name": "Eclipse race adviser",
+    "version": "1.1",
+    "description": "Удобная запись на скачки прямо из карточки лошади",
+    "manifest_version": 2,
+
+    "permissions": [
+        "tabs", 
+        "activeTab",
+        "http://185.5.55.85:8011/*",
+        "http://127.0.0.1:8011/*",
+        "http://*.eklps.com/*",
+        "http://eklps.com/*"
+    ],
+
+    "content_scripts": [
+        {
+            "matches": ["http://*.eklps.com/*", "http://eklps.com/*"],
+            "js": ["js/jquery.min.js", "js/jquery.cookie.js"]
+        }
+    ],
+
+    "browser_action": {
+        "default_title": "Eclipse race adviser",
+        "default_icon": "img/16x16.png",
+        "default_popup": "popup.html"
+    }
+}

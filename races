@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>"ЭклипС" :: Виртуальные скачки</title>
+
+<!-- CSS styles -->
+<link href="pagelayout.css" rel="stylesheet" type="text/css">
+
+<!-- Vertical Main Menu Bar -->
+<link href="SpryAssets/SpryMenuBarVertical.css" rel="stylesheet" type="text/css">
+<script src="SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+
+<!-- Validate the Input -->
+<script src="SpryAssets/SpryValidationTextField.js" type="text/javascript"></script>
+<link href="SpryAssets/SpryValidationTextField.css" rel="stylesheet" type="text/css">
+
+<!-- JavaScripts -->
+
+<script type="text/javascript">
+function GetXmlHttpObject()
+{
+if (window.XMLHttpRequest)
+  {
+  // code for IE7+, Firefox, Chrome, Opera, Safari
+  return new XMLHttpRequest();
+  }
+if (window.ActiveXObject)
+  {
+  // code for IE6, IE5
+  return new ActiveXObject("Microsoft.XMLHTTP");
+  }
+return null;
+}
+
+/////////////////////////////////
+var xmlhttp7;
+
+function raceentrydelete(racecodeid,horseid,stableid)
+{
+xmlhttp7=GetXmlHttpObject();
+if (xmlhttp7==null)
+  {
+  alert ("Browser does not support HTTP Request");
+  return;
+  }
+var url="inc/deleteraceentry.php";
+url=url+"?q="+racecodeid+"&&q2="+horseid+"&&q3="+stableid;
+url=url+"&sid="+Math.random();
+xmlhttp7.onreadystatechange=stateChanged7;
+xmlhttp7.open("GET",url,true);
+xmlhttp7.send(null);
+}
+function stateChanged7()
+{
+if (xmlhttp7.readyState==4)
+{
+document.getElementById("txtHint"+racecodeid+horseid).innerHTML=xmlhttp7.responseText;
+}
+}
+</script>
+
+</head><body>
+<div id="pageblock">
+  <div id="header"><img src="img/logo.png" width="168" height="100">
+</div>
+  <div id="loginboard">
+  <div style="display: inline; margin: 0 400px 0 0; text-aling: left"><b>Конюшня: "Penumbra" [Рег.Номер: 194] </b> &#8226; <a href="logout.php" class="menulink">Выход</a></div> <div style="display: inline; margin-right: 0; text-align: right">
+ Онлайн: 4  &#8226; <span id="servertime"></span>
+  <script type="text/javascript">
+var currenttime = 'October 06, 2014 01:45:28' //PHP method of getting server date
+
+///////////Stop editting here/////////////////////////////////
+
+var montharray=new Array("января","февраля","марта","апреля","мая","июня","июля","августа","сентября","октября","ноября","декабря")
+var serverdate=new Date(currenttime)
+
+function padlength(what){
+var output=(what.toString().length==1)? "0"+what : what
+return output
+}
+
+function displaytime(){
+serverdate.setSeconds(serverdate.getSeconds()+1)
+var datestring=padlength(serverdate.getDate())+" "+montharray[serverdate.getMonth()]+" "+serverdate.getFullYear()
+var timestring="&#8226; "+padlength(serverdate.getHours())+":"+padlength(serverdate.getMinutes())+":"+padlength(serverdate.getSeconds())
+document.getElementById("servertime").innerHTML=datestring+"  "+timestring
+}
+
+window.onload=function(){
+setInterval("displaytime()", 1000)
+}
+
+</script>
+</div>
+</div>
+<div id="page">  <div id="menublock">
+  <!-- Main menu -->
+  <ul id="MenuBar1" class="MenuBarVertical">
+  <li><a href="news.php">Новости</a>
+  </li>
+  <li><a class="MenuBarItemSubmenu" href="#">Конюшня</a>
+    <ul>
+      <li><a href="stableinfo.php">&#9830; Общая информация</a></li>
+      <li><a href="stableinfo_studs.php">&#9830; Жеребцы-производители</a></li>
+      <li><a href="stableinfo_broods.php">&#9830; Племенные кобылы</a></li>
+      <li><a href="stableinfo_racers.php">&#9830; Скаковое отделение</a></li>
+      <li><a href="stableinfo_foals.php">&#9830; Племенной молодняк</a></li>
+      <li><a href="stableinfo_retired.php">&#9830; Рабочий состав</a></li>
+      <li><a href="stableinfo_rent.php">&#9830; Аренда</a></li>
+      <li><a href="stableinfo_rip.php">&#9830; Мемориал</a></li>
+    </ul>
+  </li>
+  <li><a class="MenuBarItemSubmenu" href="#">Ипподром</a>
+      <ul>
+      <li><a href="track_info.php">&#9830; Ипподромы</a></li>
+      <li><a href="races_schedule.php">&#9830; Расписание скачек</a></li>
+      <li><a href="races_all_order.php">&#9830; Заказ скачек</a></li>
+      <li><a href="races_entries.php">&#9830; Прием заявок</a></li>
+      <li><a href="removefromrace.php">&#9830; Снять заявку</a></li>
+      <li><a href="races_preracecards.php">&#9830; Предварительная карточка скачек</a></li>
+      <li><a href="races_results.php">&#9830; Результаты скачек</a></li>
+      <li><a href="raceresults_search.php">&#9830; Поиск результатов скачек</a></li>
+      <li><a href="races_order.php">&#9830; Заказ субботних скачек</a></li>
+      <li><a class="MenuBarItemSubmenu" href="#">Спецмитинги</a>
+		<ul>
+      <li><a class="MenuBarItemSubmenu" href="#">Кубки "Пегаса"</a>
+		<ul>
+      <li><a href="race_pegascupsinfo.php">&#9830; Общая информация</a></li>
+      <li><a href="pg_races_entries.php">&#9830; Регистрация</a></li>
+      <li><a href="pg_races_results.php">&#9830; Результаты</a></li>
+		</ul></li>
+		</ul>
+	  </li>	  
+    </ul>
+  </li>
+  <li><a class="MenuBarItemSubmenu" href="#">Букмекер</a>
+      <ul>
+      <li><a href="toto_bets.php">&#9830; Ставки</a></li>
+      <li><a href="toto_results.php">&#9830; Результаты</a></li>
+      <li><a href="toto_statistics.php">&#9830; Статистика</a></li>
+    </ul>
+  </li>
+  <li><a class="MenuBarItemSubmenu" href="#">Тренинг</a>
+      <ul>
+      <li><a href="trening_normal.php">&#9830; Тренинг</a></li>
+      <li><a href="trening_group.php">&#9830; Результаты</a></li>
+      <li><a href="trening.php">&#9830; Тренинг (тестовый)</a></li>
+    </ul>
+  </li>
+  <li><a class="MenuBarItemSubmenu" href="#">Банк</a>
+      <ul>
+      <li><a href="bank.php">&#9830; Общая информация</a></li>
+      <li><a href="bank_transfer.php">&#9830; Переводы</a></li>
+      <li><a href="bankreport.php">&#9830; Выписка со счета</a></li>
+    </ul>
+  </li>
+  <li><a class="MenuBarItemSubmenu" href="#">Офис</a>
+      <ul>
+      <li><a class="MenuBarItemSubmenu" href="#">Смена владельца</a>
+		<ul>
+		<li><a href="horsesales.php">&#9830; Продажа лошади</a></li>
+		<li><a href="horserents.php">&#9830; Аренда лошади</a></li>
+		</ul>
+	  </li>
+	  <li><a class="MenuBarItemSubmenu" href="#">Райский Сад</a>
+		<ul>
+		<li><a href="horsesales_rs.php">&#9830; Передача лошади</a></li>
+		</ul>
+	  </li>
+      <li><a class="MenuBarItemSubmenu" href="#">Регистрат</a>
+		<ul>
+		<li><a href="changestatus_racer.php">&#9830; Регистрация скаковой лошади</a></li>
+		<li><a href="changestatus_stud.php">&#9830; Регистрация жеребца-производителя</a></li>
+		<li><a href="changestatus_private_stud.php">&#9830; Регистрация частного жеребца-производителя</a></li>
+		<li><a href="changestatus_brood.php">&#9830; Регистрация племкобылы</a></li>
+       <li><a href="changestatus_retired.php">&#9830; Перевод в рабочий состав</a></li>
+	   <li><a href="changestatus_horsename.php">&#9830; Изменение клички лошади</a></li>
+	  </ul>
+	  </li>      
+	  <li><a href="horsegeld.php">&#9830; Кастрация жеребца</a></li>
+	  <li><a href="changestatus_racersctofl.php">&#9830; Перевод из стипльчеза в гладкие</a></li>
+	  <li><a class="MenuBarItemSubmenu" href="#">Строительная контора</a>
+		<ul>
+		<li><a href="st_build.php">&#9830; Прораб</a></li>
+		<li><a href="st_manage.php">&#9830; Управляющий</a></li>
+		</ul>
+	  </li>
+    </ul>
+  </li>
+  <li><a class="MenuBarItemSubmenu" href="#">Центр заводчиков</a>
+      <ul>
+      <li><a href="studs_reiting.php">&#9830; Рейтинги ЖП</a></li>
+      <li><a href="studs_catalog.php">&#9830; Каталог ЖП</a></li>
+      <li><a href="embrio.php">&#9830; ЦИО "Эмбрио"</a></li>
+    </ul>
+  </li>
+  <li><a class="MenuBarItemSubmenu" href="#">Аукционы</a>
+      <ul>
+		<li><a class="MenuBarItemSubmenu" href="#">Сезонные</a>
+			<ul>
+				<li><a href="auction.php">&#9830; Каталог аукциона</a></li>
+				<li><a href="auctionlotsubmit.php">&#9830; Регистрация лотов</a></li>
+				<li><a href="auction_archive.php">&#9830; Архивы</a></li>
+			</ul>
+		</li>
+        <li><a class="MenuBarItemSubmenu" href="#">Частные</a>
+			<ul>
+				<li><a href="privauction.php">&#9830; Каталог аукциона</a></li>
+				<li><a href="privauctionlotsubmit.php">&#9830; Регистрация лотов</a></li>
+				<li><a href="privauction_archive.php">&#9830; Архивы</a></li>
+			</ul>
+		</li>
+		<li><a href="zkauction.php">&#9830; Распродажа</a></li>
+    </ul>
+  </li>
+  <li><a class="MenuBarItemSubmenu" href="#">Справочная</a>
+      <ul>
+      <li><a href="visit_stable.php">&#9830; Визитка конюшни</a></li>
+      <li><a href="info_horsecard.php">&#9830; Карточка лошади</a></li>
+      <li><a href="info_horsename.php">&#9830; Проверка клички лошади</a></li>
+      <li><a href="race_best10.php">&#9830; Лучшие лошади</a></li>
+      <li><a href="info_speedclass.php">&#9830; Класс резвости</a></li>
+      <li><a href="race_records.php">&#9830; Рекорды</a></li>
+      <li><a href="triplecrowns.php">&#9830; "Тройные Короны"</a></li>
+    </ul>
+  </li>
+    <li><a href="horseimport.php">Импорт лошади</a>
+    </li>
+  <li><a class="MenuBarItemSubmenu" href="#">Чемпионат</a>
+      <ul>
+      <li><a href="championship_points.php">&#9830; Баллы</a></li>
+      <li><a href="championship_entries.php">&#9830; Регистрация</a></li>
+    </ul>
+  </li>
+      <li><a href="edit_profil.php"><br>Профиль<br><br></a>
+    </li>
+
+</ul>
+<script type="text/javascript">
+<!--
+var MenuBar1 = new Spry.Widget.MenuBar("MenuBar1", {imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
+//-->
+</script>
+ </div>
+</div><!-- Начало основного блока -->
+<div id="mainblock">
+<div id="infoblock">
+<span id="infoblocktitle">Прием заявок</span>
+
+
+<table id='infoblocktbl'>
+<tr id='charter'><td><br>
+<font color='red'>Внимание!</font> Регистрация на скачки заканчивается за ДВА ДНЯ до даты проведения.
+<br><br>
+</td></tr>
+</table>
+<table id='infoblocktbl'><tr align='center'><td><br>
+
+Первым делом необходимо выбрать здание, в котором стоят скаковые лошади, доступные для регистрации на скачки:
+
+<br><br>
+<form id='chooseBuildNo' name='chooseBuildNo' method='post' action='races_entries.php'>
+Отделение: <select id='stdepid' name='stdepid'>
+<option value=0 style='color: #ccc'> ... выбираем из списка ... </option><option value='590'>Отделение 1</option><option value='674'>Отделение 2</option>
+</select>
+<input name="submitStID" type="submit" value=" выбрать отделение ">
+</form>
+<br><br>
+</td></tr>
+</table>
+
+<table id='infoblocktbl'>
+<tr id='infoblockheader'><td>Поиск скачек</td></tr>
+<tr id='charter'><td><br>
+<form id='racesearch' name='racesearch' method='post' action='races_entries.php'>
+Класс: <select name='racetype'><option value=0>&nbsp;</option>
+<option value=1>Тестовый класс</option><option value=2>Медный класс</option><option value=3>Бронзовый класс</option><option value=4>Серебряный класс</option><option value=5>Золотой класс</option><option value=6>FNX Гр.III</option><option value=7>FNX Гр.II</option><option value=8>FNX Гр.I</option><option value=10>Гр.III</option><option value=11>Гр.II</option><option value=12>Гр.I</option><option value=200>AA</option><option value=300>DWC</option><option value=500>BRC</option><option value=700>TC</option><option value=900>CH</option>
+</select><br><br>
+Дистанция:  <select name='distance2'><option value=0>&nbsp;</option>
+<option value='40'>1000 м</option><option value='44'>1100 м</option><option value='48'>1200 м</option><option value='52'>1300 м</option><option value='56'>1400 м</option><option value='64'>1600 м</option><option value='68'>1700 м</option><option value='72'>1800 м</option><option value='76'>1900 м</option><option value='80'>2000 м</option><option value='88'>2200 м</option><option value='96'>2400 м</option><option value='104'>2600 м</option><option value='112'>2800 м</option><option value='120'>3000 м</option><option value='128'>3200 м</option><option value='136'>3400 м</option><option value='144'>3600 м</option><option value='160'>4000 м</option><option value='176'>4400 м</option><option value='192'>4800 м</option>
+</select> 
+или  от <select name='distance3'><option value=0>&nbsp;</option>
+<option value='40'>1000 м</option><option value='44'>1100 м</option><option value='48'>1200 м</option><option value='52'>1300 м</option><option value='56'>1400 м</option><option value='64'>1600 м</option><option value='68'>1700 м</option><option value='72'>1800 м</option><option value='76'>1900 м</option><option value='80'>2000 м</option><option value='88'>2200 м</option><option value='96'>2400 м</option><option value='104'>2600 м</option><option value='112'>2800 м</option><option value='120'>3000 м</option><option value='128'>3200 м</option><option value='136'>3400 м</option><option value='144'>3600 м</option><option value='160'>4000 м</option><option value='176'>4400 м</option><option value='192'>4800 м</option>
+</select> 
+до <select name='distance4'><option value=0>&nbsp;</option>
+<option value='40'>1000 м</option><option value='44'>1100 м</option><option value='48'>1200 м</option><option value='52'>1300 м</option><option value='56'>1400 м</option><option value='64'>1600 м</option><option value='68'>1700 м</option><option value='72'>1800 м</option><option value='76'>1900 м</option><option value='80'>2000 м</option><option value='88'>2200 м</option><option value='96'>2400 м</option><option value='104'>2600 м</option><option value='112'>2800 м</option><option value='120'>3000 м</option><option value='128'>3200 м</option><option value='136'>3400 м</option><option value='144'>3600 м</option><option value='160'>4000 м</option><option value='176'>4400 м</option><option value='192'>4800 м</option>
+</select><br><br>
+
+Специализация:<br>
+<input type='radio' id='track_pref_0' value='0' name='sc'> гладкие скачки<br>
+<input type='radio' id='track_pref_1' value='1' name='sc'> стипльчез / торф<br><br>
+
+Возраст: <select name='agecriteria'>
+<option value='0'></option>
+<option value='2'> 2х лет </option>
+<option value='2up'> 2х лет и старше </option>
+<option value='3'> 3х лет </option>
+<option value='3up'> 3х лет и старше </option>
+<option value='4'> 4х лет </option>
+<option value='4up'> 4х лет и старше </option>
+</select><br><br>
+
+<p><input type='radio' id='track_pref_0' value='3' name='sex' /> общая<br />
+<input type='radio' id='track_pref_1' value='2' name='sex' /> только кобылы<br />
+<input type='radio' id='track_pref_2' value='1' name='sex' /> только жеребцы</p>
+
+<p><input name='submit' type='submit' value='поиск'></p>
+</form>
+</td></tr>
+</table>
+<table id='infoblocktbl'>
+<tr id='infoblockheader'><td>9 октября 2014</td><td colspan='2'>Ипподром: Центральный</td></tr>
+<tr id='charter' bgcolor='#C1F999'><td width='100'><a name='race2014100913'>2014100913</a></td><td align='left'><strong>Тестовый класс, 1800 м, 2+yo</strong></td><td>Заявлено: 24</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014100913>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#C1F999'><td width='100'><a name='race2014100909'>2014100909</a></td><td align='left'><strong>Тестовый класс, 1900 м, 2+yo</strong></td><td>Заявлено: 29</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014100909>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#C1F999'><td width='100'><a name='race2014100912'>2014100912</a></td><td align='left'><strong>Тестовый класс, 2800 м, 3+yo</strong></td><td>Заявлено: 8</td></tr><div id='txtHint20141009126757'><tr id='charter'><td colspan='2' align='left'>6757 <strong>Нельсон</strong><font size=1>, Ж 3,  (402 Ночник - 435 Незабудка), Penumbra, 0 0-0-0 $0</font></td><td><br><form id='cancellentry' name='cancellentry' method='post' action='races_entries.php#race2014100912'><input type='image' src='img/cancel_but.jpg' alt='Отменить заявку' onclick='raceentrydelete(2014100912,6757,194)'></form></td></tr></div><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014100912>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#C1F999'><td width='100'><a name='race2014100914'>2014100914</a></td><td align='left'><strong>Тестовый класс, 3200 м, 4+yo</strong></td><td>Заявлено: 9</td></tr><div id='txtHint20141009142564'><tr id='charter'><td colspan='2' align='left'>2564 <strong>Карча</strong><font size=1>, Ж 7,  (105 Чинар - 1135 Картахена), Penumbra, 23 1-3-3 $54,275</font></td><td><br><form id='cancellentry' name='cancellentry' method='post' action='races_entries.php#race2014100914'><input type='image' src='img/cancel_but.jpg' alt='Отменить заявку' onclick='raceentrydelete(2014100914,2564,194)'></form></td></tr></div><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014100914>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#C1F999'><td width='100'><a name='race2014100907'>2014100907</a></td><td align='left'><strong>Тестовый класс, ст-з, 1000 м, 2+yo</strong></td><td>Заявлено: 16</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014100907>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#C1F999'><td width='100'><a name='race2014100911'>2014100911</a></td><td align='left'><strong>Тестовый класс, ст-з, 1100 м, 2+yo</strong></td><td>Заявлено: 13</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014100911>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#C1F999'><td width='100'><a name='race2014100916'>2014100916</a></td><td align='left'><strong>Тестовый класс, ст-з, 1800 м, 2+yo</strong></td><td>Заявлено: 6</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014100916>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#C1F999'><td width='100'><a name='race2014100908'>2014100908</a></td><td align='left'><strong>Тестовый класс, ст-з, 2600 м, 3+yo</strong></td><td>Заявлено: 5</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014100908>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#C1F999'><td width='100'><a name='race2014100910'>2014100910</a></td><td align='left'><strong>Тестовый класс, ст-з, 3200 м, 4+yo</strong></td><td>Заявлено: 1</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014100910>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer_rs.php' method='post'>
+<input type='hidden' name='racecode' value=2014100910>
+<input type='submit' value='из РайСада'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#C1F999'><td width='100'><a name='race2014100901'>2014100901</a></td><td align='left'><strong>Гр.III Бег Времени, 3200 м, 4+yo Ж</strong> (класс резвости E)</td><td>Заявлено: 1</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014100901>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer_rs.php' method='post'>
+<input type='hidden' name='racecode' value=2014100901>
+<input type='submit' value='из РайСада'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#C1F999'><td width='100'><a name='race2014100902'>2014100902</a></td><td align='left'><strong>Гр.II Magic Art Stakes, ст-з, 1700 м, 2+yo К</strong> (класс резвости D)</td><td>Заявлено: 12</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014100902>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#C1F999'><td width='100'><a name='race2014100903'>2014100903</a></td><td align='left'><strong>Гр.I Limpopo Dash, ст-з, 1100 м, 2+yo К</strong> (класс резвости B)</td><td>Заявлено: 1</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014100903>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer_rs.php' method='post'>
+<input type='hidden' name='racecode' value=2014100903>
+<input type='submit' value='из РайСада'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#C1F999'><td width='100'><a name='race2014100904'>2014100904</a></td><td align='left'><strong>Гр.I Battle Front Spring Prix, ст-з, 4400 м, 4+yo Ж</strong> (класс резвости B)</td><td>Заявлено: 1</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014100904>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer_rs.php' method='post'>
+<input type='hidden' name='racecode' value=2014100904>
+<input type='submit' value='из РайСада'>
+</form><br><br></td></tr>
+<tr id='infoblockheader'><td>9 октября 2014</td><td colspan='2'>Ипподром: Зеленый Луг</td></tr>
+<tr id='charter' bgcolor='#FED6FE'><td width='100'><a name='race2014100915'>2014100915</a></td><td align='left'><strong>Бронзовый класс, 1400 м, 2yo</strong> (максимальный класс резвости F и ниже)</td><td>Заявлено: 5</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014100915>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#FED6FE'><td width='100'><a name='race2014100905'>2014100905</a></td><td align='left'><strong>Золотой класс, 1600 м, 3+yo</strong> (максимальный класс резвости C и ниже)</td><td>Заявлено: 19</td></tr><div id='txtHint20141009056568'><tr id='charter'><td colspan='2' align='left'>6568 <strong>Приправа</strong><font size=1>, К 3,  (1329 Проспект - 1211 Прогулка), Penumbra, 1 0-0-0 $0</font></td><td><br><form id='cancellentry' name='cancellentry' method='post' action='races_entries.php#race2014100905'><input type='image' src='img/cancel_but.jpg' alt='Отменить заявку' onclick='raceentrydelete(2014100905,6568,194)'></form></td></tr></div><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014100905>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#FED6FE'><td width='100'><a name='race2014100906'>2014100906</a></td><td align='left'><strong>Золотой класс, 1800 м, 3yo</strong> (максимальный класс резвости E и ниже)</td><td>Заявлено: 9</td></tr><div id='txtHint20141009066302'><tr id='charter'><td colspan='2' align='left'>6302 <strong>Момент</strong><font size=1>, Ж 3,  (2490 Marvellous - 1207 Марсельеза), Penumbra, 2 0-1-0 $1,630</font></td><td><br><form id='cancellentry' name='cancellentry' method='post' action='races_entries.php#race2014100906'><input type='image' src='img/cancel_but.jpg' alt='Отменить заявку' onclick='raceentrydelete(2014100906,6302,194)'></form></td></tr></div><div id='txtHint20141009066738'><tr id='charter'><td colspan='2' align='left'>6738 <strong>El Alza</strong><font size=1>, Ж 3,  (2509 Attar Of Roses - 2103 El Lazize), Penumbra, 0 0-0-0 $0</font></td><td><br><form id='cancellentry' name='cancellentry' method='post' action='races_entries.php#race2014100906'><input type='image' src='img/cancel_but.jpg' alt='Отменить заявку' onclick='raceentrydelete(2014100906,6738,194)'></form></td></tr></div>
+<tr id='infoblockheader'><td>10 октября 2014</td><td colspan='2'>Ипподром: Центральный</td></tr>
+<tr id='charter' bgcolor='#FBF9B5'><td width='100'><a name='race2014101010'>2014101010</a></td><td align='left'><strong>Тестовый класс, 1200 м, 2+yo</strong></td><td>Заявлено: 15</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101010>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#FBF9B5'><td width='100'><a name='race2014101013'>2014101013</a></td><td align='left'><strong>Тестовый класс, 1300 м, 2+yo</strong></td><td>Заявлено: 9</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101013>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#FBF9B5'><td width='100'><a name='race2014101009'>2014101009</a></td><td align='left'><strong>Тестовый класс, 2200 м, 3+yo</strong></td><td>Заявлено: 19</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101009>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#FBF9B5'><td width='100'><a name='race2014101012'>2014101012</a></td><td align='left'><strong>Тестовый класс, 4000 м, 4+yo</strong></td><td>Заявлено: 6</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101012>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#FBF9B5'><td width='100'><a name='race2014101011'>2014101011</a></td><td align='left'><strong>Тестовый класс, 4800 м, 4+yo</strong></td><td>Заявлено: 0</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101011>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#FBF9B5'><td width='100'><a name='race2014101014'>2014101014</a></td><td align='left'><strong>Тестовый класс, ст-з, 1300 м, 2+yo</strong></td><td>Заявлено: 1</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101014>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#FBF9B5'><td width='100'><a name='race2014101008'>2014101008</a></td><td align='left'><strong>Тестовый класс, ст-з, 1300 м, 2+yo</strong></td><td>Заявлено: 2</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101008>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#FBF9B5'><td width='100'><a name='race2014101007'>2014101007</a></td><td align='left'><strong>Тестовый класс, ст-з, 1300 м, 2+yo</strong></td><td>Заявлено: 4</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101007>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#FBF9B5'><td width='100'><a name='race2014101006'>2014101006</a></td><td align='left'><strong>Тестовый класс, ст-з, 4000 м, 4+yo</strong></td><td>Заявлено: 5</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101006>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#FBF9B5'><td width='100'><a name='race2014101001'>2014101001</a></td><td align='left'><strong>Гр.II Strawberry Time, 2200 м, 3+yo К</strong> (класс резвости C)</td><td>Заявлено: 12</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101001>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#FBF9B5'><td width='100'><a name='race2014101002'>2014101002</a></td><td align='left'><strong>Гр.II Country Ruffian Cup, ст-з, 2800 м, 3+yo Ж</strong> (класс резвости D)</td><td>Заявлено: 0</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101002>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#FBF9B5'><td width='100'><a name='race2014101003'>2014101003</a></td><td align='left'><strong>Гр.I Note Bianko Stakes, ст-з, 1600 м, 2+yo К</strong> (класс резвости B)</td><td>Заявлено: 0</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101003>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr>
+<tr id='infoblockheader'><td>10 октября 2014</td><td colspan='2'>Ипподром: Зеленый Луг</td></tr>
+<tr id='charter' bgcolor='#E4FFAE'><td width='100'><a name='race2014101005'>2014101005</a></td><td align='left'><strong>Золотой класс, 1900 м, 2+yo</strong> (максимальный класс резвости A и ниже)</td><td>Заявлено: 10</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101005>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#E4FFAE'><td width='100'><a name='race2014101004'>2014101004</a></td><td align='left'><strong>Золотой класс, 2800 м, 3+yo Ж</strong> (максимальный класс резвости B и ниже)</td><td>Заявлено: 7</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101004>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr>
+<tr id='infoblockheader'><td>11 октября 2014</td><td colspan='2'>Ипподром: Центральный</td></tr>
+<tr id='charter' bgcolor='#D8FEFE'><td width='100'><a name='race2014101115'>2014101115</a></td><td align='left'><strong>Тестовый класс, 1400 м, 2+yo</strong></td><td>Заявлено: 0</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101115>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#D8FEFE'><td width='100'><a name='race2014101111'>2014101111</a></td><td align='left'><strong>Тестовый класс, 1400 м, 2+yo</strong></td><td>Заявлено: 7</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101111>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#D8FEFE'><td width='100'><a name='race2014101110'>2014101110</a></td><td align='left'><strong>Тестовый класс, 1600 м, 2+yo</strong></td><td>Заявлено: 10</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101110>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#D8FEFE'><td width='100'><a name='race2014101109'>2014101109</a></td><td align='left'><strong>Тестовый класс, 1900 м, 2+yo</strong></td><td>Заявлено: 7</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101109>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#D8FEFE'><td width='100'><a name='race2014101113'>2014101113</a></td><td align='left'><strong>Тестовый класс, 4400 м, 4+yo</strong></td><td>Заявлено: 1</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101113>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#D8FEFE'><td width='100'><a name='race2014101114'>2014101114</a></td><td align='left'><strong>Тестовый класс, 4400 м, 4+yo</strong></td><td>Заявлено: 0</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101114>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#D8FEFE'><td width='100'><a name='race2014101106'>2014101106</a></td><td align='left'><strong>Тестовый класс, 4800 м, 4+yo</strong></td><td>Заявлено: 0</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101106>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#D8FEFE'><td width='100'><a name='race2014101105'>2014101105</a></td><td align='left'><strong>Тестовый класс, ст-з, 1400 м, 2+yo</strong></td><td>Заявлено: 6</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101105>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#D8FEFE'><td width='100'><a name='race2014101112'>2014101112</a></td><td align='left'><strong>Тестовый класс, ст-з, 2200 м, 3+yo</strong></td><td>Заявлено: 7</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101112>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#D8FEFE'><td width='100'><a name='race2014101101'>2014101101</a></td><td align='left'><strong>Гр.III Tasotti Stakes, 2800 м, 3+yo К</strong> (класс резвости E)</td><td>Заявлено: 1</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101101>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#D8FEFE'><td width='100'><a name='race2014101102'>2014101102</a></td><td align='left'><strong>Гр.II Цветочные скачки, ст-з, 1300 м, 2+yo К</strong> (класс резвости C)</td><td>Заявлено: 1</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101102>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#D8FEFE'><td width='100'><a name='race2014101103'>2014101103</a></td><td align='left'><strong>Гр.II Приз Луары, ст-з, 3200 м, 4+yo К</strong> (класс резвости D)</td><td>Заявлено: 2</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101103>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr>
+<tr id='infoblockheader'><td>11 октября 2014</td><td colspan='2'>Ипподром: Зеленый Луг</td></tr>
+<tr id='charter' bgcolor='#CCCC66'><td width='100'><a name='race2014101108'>2014101108</a></td><td align='left'><strong>Золотой класс, 1400 м, 3+yo К</strong> (максимальный класс резвости C и ниже)</td><td>Заявлено: 6</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101108>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#CCCC66'><td width='100'><a name='race2014101107'>2014101107</a></td><td align='left'><strong>Золотой класс, 2000 м, 4+yo К</strong> (максимальный класс резвости B и ниже)</td><td>Заявлено: 5</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101107>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr>
+<tr id='infoblockheader'><td>11 октября 2014</td><td colspan='2'>Ипподром: Феникс</td></tr>
+<tr id='charter' bgcolor='#C1F999'><td width='100'><a name='race2014101104'>2014101104</a></td><td align='left'><strong>FNX Гр.I  Stars Wins, 1700 м, 2yo</strong> (время на данной дистанции не резвее 1:50)</td><td>Заявлено: 4</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101104>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr>
+<tr id='infoblockheader'><td>12 октября 2014</td><td colspan='2'>Ипподром: Центральный</td></tr>
+<tr id='charter' bgcolor='#FED6FE'><td width='100'><a name='race2014101211'>2014101211</a></td><td align='left'><strong>Тестовый класс, 1700 м, 2+yo</strong></td><td>Заявлено: 5</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101211>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#FED6FE'><td width='100'><a name='race2014101215'>2014101215</a></td><td align='left'><strong>Тестовый класс, 2000 м, 3+yo</strong></td><td>Заявлено: 1</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101215>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#FED6FE'><td width='100'><a name='race2014101207'>2014101207</a></td><td align='left'><strong>Тестовый класс, ст-з, 1200 м, 2+yo</strong></td><td>Заявлено: 2</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101207>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#FED6FE'><td width='100'><a name='race2014101213'>2014101213</a></td><td align='left'><strong>Тестовый класс, ст-з, 1900 м, 2+yo</strong></td><td>Заявлено: 2</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101213>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#FED6FE'><td width='100'><a name='race2014101212'>2014101212</a></td><td align='left'><strong>Тестовый класс, ст-з, 1900 м, 2+yo</strong></td><td>Заявлено: 6</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101212>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#FED6FE'><td width='100'><a name='race2014101216'>2014101216</a></td><td align='left'><strong>Тестовый класс, ст-з, 2000 м, 3+yo</strong></td><td>Заявлено: 2</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101216>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#FED6FE'><td width='100'><a name='race2014101201'>2014101201</a></td><td align='left'><strong>AA Astor Plate, 1000 м, 2yo Ж</strong> (минимальный класс резвости D и выше)</td><td>Заявлено: 4</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101201>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#FED6FE'><td width='100'><a name='race2014101202'>2014101202</a></td><td align='left'><strong>AA Grand Prix de Saint-Cloud, 2000 м, 3+yo К</strong> (минимальный класс резвости D и выше)</td><td>Заявлено: 3</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101202>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#FED6FE'><td width='100'><a name='race2014101203'>2014101203</a></td><td align='left'><strong>AA New Ideal Handicap, торф, 1100 м, 2yo Ж</strong> (минимальный класс резвости D и выше)</td><td>Заявлено: 0</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101203>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#FED6FE'><td width='100'><a name='race2014101204'>2014101204</a></td><td align='left'><strong>AA Queen Cup Stakes, ст-з, 1600 м, 3+yo К</strong> (минимальный класс резвости D и выше)</td><td>Заявлено: 0</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101204>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#FED6FE'><td width='100'><a name='race2014101205'>2014101205</a></td><td align='left'><strong>AA Triple Vivat Stakes, ст-з, 2400 м, 3+yo Ж</strong> (минимальный класс резвости D и выше)</td><td>Заявлено: 2</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101205>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#FED6FE'><td width='100'><a name='race2014101206'>2014101206</a></td><td align='left'><strong>AA Queen Victoria Stakes, ст-з, 4800 м, 4+yo К</strong> (минимальный класс резвости D и выше)</td><td>Заявлено: 2</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101206>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr>
+<tr id='infoblockheader'><td>12 октября 2014</td><td colspan='2'>Ипподром: Зеленый Луг</td></tr>
+<tr id='charter' bgcolor='#FBF9B5'><td width='100'><a name='race2014101214'>2014101214</a></td><td align='left'><strong>Серебряный класс, 1000 м, 4+yo</strong> (максимальный класс резвости F и ниже)</td><td>Заявлено: 1</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101214>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#FBF9B5'><td width='100'><a name='race2014101210'>2014101210</a></td><td align='left'><strong>Серебряный класс, 1400 м, 3+yo</strong> (максимальный класс резвости D и ниже)</td><td>Заявлено: 2</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101210>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#FBF9B5'><td width='100'><a name='race2014101217'>2014101217</a></td><td align='left'><strong>Серебряный класс, 2400 м, 3yo</strong> (максимальный класс резвости C и ниже)</td><td>Заявлено: 1</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101217>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#FBF9B5'><td width='100'><a name='race2014101208'>2014101208</a></td><td align='left'><strong>Золотой класс, торф, 1100 м, 2&3yo</strong> (максимальный класс резвости D и ниже)</td><td>Заявлено: 1</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101208>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#FBF9B5'><td width='100'><a name='race2014101209'>2014101209</a></td><td align='left'><strong>Золотой класс, торф, 1800 м, 2&3yo</strong> (максимальный класс резвости E и ниже)</td><td>Заявлено: 3</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101209>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr>
+<tr id='infoblockheader'><td>13 октября 2014</td><td colspan='2'>Ипподром: Центральный</td></tr>
+<tr id='charter' bgcolor='#E4FFAE'><td width='100'><a name='race2014101301'>2014101301</a></td><td align='left'><strong>Гр.III Delta X Stakes, 1900 м, 2+yo Ж</strong> (максимальный класс резвости F и ниже)</td><td>Заявлено: 6</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101301>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#E4FFAE'><td width='100'><a name='race2014101302'>2014101302</a></td><td align='left'><strong>Гр.II Полотно Пенелопы, 4000 м, 4+yo К</strong> (класс резвости D)</td><td>Заявлено: 0</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101302>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#E4FFAE'><td width='100'><a name='race2014101303'>2014101303</a></td><td align='left'><strong>Гр.II The Hamilton Classic, ст-з, 2000 м, 3+yo К</strong> (класс резвости D)</td><td>Заявлено: 2</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101303>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr>
+<tr id='infoblockheader'><td>13 октября 2014</td><td colspan='2'>Ипподром: Зеленый Луг</td></tr>
+<tr id='charter' bgcolor='#D8FEFE'><td width='100'><a name='race2014101306'>2014101306</a></td><td align='left'><strong>Серебряный класс, 1200 м, 3yo</strong> (максимальный класс резвости C и ниже)</td><td>Заявлено: 1</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101306>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#D8FEFE'><td width='100'><a name='race2014101305'>2014101305</a></td><td align='left'><strong>Золотой класс, 4000 м, 4+yo</strong> (максимальный класс резвости C и ниже)</td><td>Заявлено: 3</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101305>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#D8FEFE'><td width='100'><a name='race2014101304'>2014101304</a></td><td align='left'><strong>Золотой класс, 4800 м, 4+yo</strong> (максимальный класс резвости D и ниже)</td><td>Заявлено: 1</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101304>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr>
+<tr id='infoblockheader'><td>14 октября 2014</td><td colspan='2'>Ипподром: Центральный</td></tr>
+<tr id='charter' bgcolor='#CCCC66'><td width='100'><a name='race2014101401'>2014101401</a></td><td align='left'><strong>Гр.III Emax Handicap, ст-з, 2800 м, 3+yo К</strong> (класс резвости E)</td><td>Заявлено: 1</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101401>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#CCCC66'><td width='100'><a name='race2014101402'>2014101402</a></td><td align='left'><strong>Гр.II Discovery Gardens Handicap, 3200 м, 4+yo К</strong> (класс резвости C)</td><td>Заявлено: 0</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101402>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#CCCC66'><td width='100'><a name='race2014101403'>2014101403</a></td><td align='left'><strong>Гр.I Desert Stakes, ст-з, 1600 м, 2+yo Ж</strong> (минимальный класс резвости A и выше)</td><td>Заявлено: 0</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101403>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr>
+<tr id='infoblockheader'><td>14 октября 2014</td><td colspan='2'>Ипподром: Зеленый Луг</td></tr>
+<tr id='charter' bgcolor='#C1F999'><td width='100'><a name='race2014101404'>2014101404</a></td><td align='left'><strong>Золотой класс, 1400 м, 2+yo</strong> (максимальный класс резвости E и ниже)</td><td>Заявлено: 1</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101404>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#C1F999'><td width='100'><a name='race2014101405'>2014101405</a></td><td align='left'><strong>Золотой класс, 2400 м, 6yo Ж</strong> (максимальный класс резвости B и ниже)</td><td>Заявлено: 1</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101405>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr>
+<tr id='infoblockheader'><td>15 октября 2014</td><td colspan='2'>Ипподром: Центральный</td></tr>
+<tr id='charter' bgcolor='#FED6FE'><td width='100'><a name='race2014101501'>2014101501</a></td><td align='left'><strong>Гр.III Восточная Сказка, 1100 м, 2+yo К</strong> (максимальный класс резвости F и ниже)</td><td>Заявлено: 0</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101501>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#FED6FE'><td width='100'><a name='race2014101502'>2014101502</a></td><td align='left'><strong>Гр.III Randevu Stakes, 4000 м, 4+yo К</strong> (максимальный класс резвости F и ниже)</td><td>Заявлено: 0</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101502>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#FED6FE'><td width='100'><a name='race2014101503'>2014101503</a></td><td align='left'><strong>Гр.II Приз Матроны, ст-з, 3200 м, 4+yo К</strong> (класс резвости C)</td><td>Заявлено: 0</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101503>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#FED6FE'><td width='100'><a name='race2014101504'>2014101504</a></td><td align='left'><strong>Гр.I Triple Vivat Stakes, ст-з, 2000 м, 3+yo Ж</strong> (минимальный класс резвости A и выше)</td><td>Заявлено: 0</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101504>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr>
+<tr id='infoblockheader'><td>15 октября 2014</td><td colspan='2'>Ипподром: Зеленый Луг</td></tr>
+<tr id='charter' bgcolor='#FBF9B5'><td width='100'><a name='race2014101506'>2014101506</a></td><td align='left'><strong>Золотой класс, 2400 м, 3yo</strong> (максимальный класс резвости E и ниже)</td><td>Заявлено: 0</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101506>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr><tr id='charter' bgcolor='#FBF9B5'><td width='100'><a name='race2014101505'>2014101505</a></td><td align='left'><strong>Золотой класс, торф, 1900 м, 2+yo</strong> (максимальный класс резвости D и ниже)</td><td>Заявлено: 0</td></tr><tr id='charter'><td colspan='3' align='right'><br><form action='enter_racer.php' method='post'>
+<input type='hidden' name='racecode' value=2014101505>
+<input type='submit' value='Регистрация'>
+</form><br><br></td></tr></table>
+
+
+</div>
+<!-- End of основного блока -->
+</div>
+<div id="footer">
+<br />
+<a href="http://www.eklps.com" class="menulink">Игровой проект "ЭклипС"</a> &copy; 2003-2014<br />
+Вся информация на данном сайте является частной собственностью и защищена законом <br />
+<div style="padding: 40px 0px 20px 0px;">
+<span>
+		<!--Akavita counter start-->
+<script type="text/javascript">var AC_ID=55830;var AC_TR=false;
+(function(){var l='http://adlik.akavita.com/acode.js'; var t='text/javascript';
+try {var h=document.getElementsByTagName('head')[0];
+var s=document.createElement('script'); s.src=l;s.type=t;h.appendChild(s);}catch(e){
+document.write(unescape('%3Cscript src="'+l+'" type="'+t+'"%3E%3C/script%3E'));}})();
+</script><span id="AC_Image"></span>
+<noscript><a target='_blank' href='http://www.akavita.by/'>
+<img src='http://adlik.akavita.com/bin/lik?id=55830&it=1'
+border='0' height='1' width='1' alt='Akavita'/>
+</a></noscript>
+<!--Akavita counter end-->
+
+
+&nbsp;&nbsp;&nbsp;
+<!-- HotLog -->
+<script type="text/javascript">
+var hotlog_counter_id = 2319785;
+var hotlog_hit = 25;
+var hotlog_counter_type = 565;
+</script>
+<script src="http://js.hotlog.ru/counter.js" type="text/javascript"></script>
+<noscript>
+<a href="http://click.hotlog.ru/?2319785" target="_blank">
+<img src="http://hit25.hotlog.ru/cgi-bin/hotlog/count?s=2319785&im=565" border="0"
+title="HotLog" alt="HotLog"></a>
+</noscript>
+<!-- /HotLog -->
+&nbsp;&nbsp;&nbsp;
+
+
+<!--Openstat-->
+<span id="openstat586556"></span>
+<script type="text/javascript">
+var openstat = { counter: 586556, image: 87, color: "ff9822", next: openstat, track_links: "all" };
+(function(d, t, p) {
+var j = d.createElement(t); j.async = true; j.type = "text/javascript";
+j.src = ("https:" == p ? "https:" : "http:") + "//openstat.net/cnt.js";
+var s = d.getElementsByTagName(t)[0]; s.parentNode.insertBefore(j, s);
+})(document, "script", document.location.protocol);
+</script>
+<!--/Openstat-->
+
+<!--Google-->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-43673244-1', 'eklps.com');
+  ga('send', 'pageview');
+
+</script>
+<!--//Google-->
+
+</span>		
+		</div>
+</div>
+</div>
+</body>
+</html>

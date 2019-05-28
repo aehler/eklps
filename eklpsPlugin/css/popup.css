@@ -1,0 +1,138 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 11px;
+    font-family: Verdana, Arial;
+    width: 550px;
+}
+
+td {
+    padding-bottom: 3px;
+    padding-top: 3px;
+    border-bottom: 1px dotted #58647c;
+}
+
+.filterset {
+    width: 480px;
+    border: 1px solid #ccc;
+    background: #3b4353;
+    padding: 5px;
+    margin: 5px;
+    margin-bottom: 10px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+}
+
+.btn-group {
+    margin: 5px;
+    margin-left: 3px;
+}
+
+.btn {
+    display:inline;
+    padding:4px 4px;
+    margin-bottom:0;
+    font-size:12px;
+    font-weight:bolder;
+    line-height:1.428571429;
+    text-align:center;
+    white-space:nowrap;
+    vertical-align:middle;
+    cursor:pointer;
+    background-image:none;
+    border:1px solid transparent;
+    border-radius:4px;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    -o-user-select:none;
+    user-select:none;
+    height: 15px;
+}
+.btn:focus {
+    outline:thin dotted;
+    outline:5px auto -webkit-focus-ring-color;
+    outline-offset:-2px
+}
+
+
+.btn:hover, .btn:focus {
+    color:#333;
+    text-decoration:none
+}
+.btn:active,.btn.active {
+    background-image:none;
+    outline:0;
+    -webkit-box-shadow:inset 0 3px 5px rgba(0,0,0,0.125);
+    box-shadow:inset 0 3px 5px rgba(0,0,0,0.125)
+}
+
+.btn-default {
+    color:#333;
+    background-color: #dde6ee;
+    border-color:#ccc
+}
+.btn-default:hover,.btn-default:focus,.btn-default:active,.btn-default.active {
+     color:#333;
+     background-color:#ebebeb;
+     border-color:#adadad
+ }
+.btn-default:active,.btn-default.active {
+    background-image:none
+}
+
+.btn-down {
+    color: #FFF !important;
+    background-color: #5CB85C !important;
+    border-color: #4CAE4C !important;
+}
+
+.hint {
+    text-decoration: dotted;
+    cursor: help;
+}
+
+body {
+    background: #323846;
+    margin: 10px;
+    color: #DDD;
+    width: 550px;
+}
+
+h3 {
+    margin-bottom: 10px;
+}
+
+.fakelink {
+    color: #A7CEFA;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+label {
+    font-size: 14px;
+    font-weight: normal;
+    margin: 0 0 0 0px;
+    text-align: left;
+    display: block;
+}
+
+label.lbl {
+    color: #adadad;
+    font-size: 12px;
+}
+
+.list-unstyled {
+    padding-left: 0px;
+    list-style-position: outside;
+    list-style: none;
+}
+ul, ol {
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+li {
+    margin-top: 0px;
+    margin-bottom: 3px;
+}

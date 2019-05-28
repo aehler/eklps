@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="css/popup.css" />
+
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/popup.js"></script>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h3 align="center">-= Eklipse Adviser Chrome plugin =-</h3>
+<label for="filterset" class="lbl hint">Настройки</label>
+<div class="hint-block">
+    Обозначения кнопок:
+    <ul>
+        <li>Кнопки Т, М, Б, С, З, П, III, II, I, AA это фильтры по классу скачек. При нажатии на фильтр будут показаны только выбранные скачки, если снять все фильтры классов - покажутся все доступные скачки вне зависимости от класса</li>
+        <li>fl, sc - фильтр по типу скачек</li>
+        <li>Ж, К - тут все понятно... Фильтр строгий, то есть если выбран любой или оба - отрезаются общие скачки</li>
+        <li style="display: none;">S, S+, S++. По умолчанию показыватся все скачки, в которые технически можно записать лошадь. Чтобы ограничить поиск по классу резвости можно выбрать один из этих фильтров (они взаимоисключающие). S выдаст строгое соответствие, S+ в пределах одной ступени шкалы резвости, S++ в пределах двух ступеней</li>
+    </ul>
+</div>
+<div class="filterset" id="filterset">
+    <div class="btn-group">
+        <span class="btn btn-default class-selector" title="Тестовый класс" data="TClass">Т</span>
+        <span class="btn btn-default class-selector" title="Медный класс" data="MClass">M</span>
+        <span class="btn btn-default class-selector" title="Бронзовый класс" data="BClass">Б</span>
+        <span class="btn btn-default class-selector" title="Серебряный класс" data="SClass">С</span>
+        <span class="btn btn-default class-selector" title="Золотой класс" data="GClass">З</span>
+        <span class="btn btn-default class-selector" title="Платиновый класс" data="PClass">П</span>
+        <span class="btn btn-default class-selector" title="Гр III" data="GR3">III</span>
+        <span class="btn btn-default class-selector" title="Гр II" data="GR2">II</span>
+        <span class="btn btn-default class-selector" title="Гр I"  data="GR1">I</span>
+        <span class="btn btn-default class-selector" title="Класс АА" data="AAClass">АА</span> |
+        <span class="btn btn-default class-selector" title="Flat" data="Fl">fl</span>
+        <span class="btn btn-default class-selector" title="Stipple" data="Sc">sc</span> |
+        <span class="btn btn-default class-selector" title="Жеребцы" data="SSex">Ж</span>
+        <span class="btn btn-default class-selector" title="Кобылы" data="MSex">К</span> |
+        <!-- <span class="btn btn-default class-selector" title="Строго по букве" data="Strict">S</span>
+        <span class="btn btn-default class-selector" title="Буква + одна градация" data="StrictPlus">S+</span>
+        <span class="btn btn-default class-selector" title="Буква + две градации" data="StrictPlusPlus">S++</span> -->
+        <span class="fakelink" id="refreshAction">Обновить</span>
+    </div>
+</div>
+<div id="main">
+
+</div>
+<form id="redirector" name="redirector" method="POST" target="_blank" action="http://eklps.com/stables/enter_racer.php">
+    <input type="hidden" name="racecode" value="" id="racecode">
+</form>
+</body>
+</html>
