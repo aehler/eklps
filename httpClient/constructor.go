@@ -20,8 +20,8 @@ func NewClient() (*client) {
 		Port:		"80",
 		TimeLayout: "02.01.2006 3:04:05.000000 pm (MST)",
 		Client: 	http.Client{Transport: tr},
-		Login:		"admor",
-		Password:	"q84VOw",
+		Login:		"", //site login
+		Password:	"", //site password
 	}
 
 	if err := c.eklpsLogin(); err != nil {
