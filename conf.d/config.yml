@@ -1,7 +1,7 @@
 postgresql:
         address: "127.0.0.1:5432"
         username: "weasel"
-        password: "qwr123rrr"
+        password: ""
         database: "postgres"
 
 path:
